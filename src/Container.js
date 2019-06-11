@@ -14,7 +14,7 @@ export default function CalculatorContainer() {
   const classes = useStyles();
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="md">
       <Paper className={classes.root}>
         <Calculator/>
       </Paper>

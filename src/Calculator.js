@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {Grid, Typography, TextField, FormControlLabel, Checkbox, Divider} from '@material-ui/core';
+import Result from "./Result.js";
 
 class Calculator extends React.Component
 {
@@ -9,12 +10,12 @@ class Calculator extends React.Component
 		super(props);
 
 		this.state = {
-			visitors: 0,
-			participants: 0,
-			personnel: 0,
-			male: 50,
-			duration: 0,
-			alcohol: false
+			visitors: 20000,
+			participants: 100,
+			personnel: 100,
+			male: 55,
+			duration: 9,
+			alcohol: true
 		};
 
 		this.handlePeopleChange = this.handlePeopleChange.bind(this);
@@ -57,6 +58,65 @@ class Calculator extends React.Component
 	render () 
 	{
 		const t = this.state.visitors + this.state.participants + this.state.personnel
+		const male = t * this.state.male * 0.01;
+		const female = t * (100 - this.state.male) * 0.01;
+
+		const aus_duration_modifier = this.state.duration >= 8 ? 1 : 
+																	this.state.duration >= 6 ? 0.8 :
+																	this.state.duration >= 4 ? 0.75 :
+																	0.7;
+		const aus_alcohol_modifer = this.state.alcohol ? 1 : 0.5;
+		const aus_modifier = aus_duration_modifier * aus_alcohol_modifer;
+
+		let uk_modifier = {};
+		if (this.state.duration >= 6 && this.state.alcohol) 
+		{
+			uk_modifier.wc_male = 400;
+			uk_modifier.urinoir_male = 100;
+			uk_modifier.wc_female = 75;
+		}
+		else if (this.state.duration >= 6)
+		{
+			uk_modifier.wc_male = 425;
+			uk_modifier.urinoir_male = 125;
+			uk_modifier.wc_female = 85;		
+		}
+		else 
+		{
+			uk_modifier.wc_male = 500;
+			uk_modifier.urinoir_male = 150;
+			uk_modifier.wc_female = 100;
+		}
+
+		let australia = {
+			name: "Australisch Model",
+			men_wc: Math.round((male / 500) * aus_modifier),
+			men_urinoir: Math.round((((male / 500) * 3) * (this.state.male * 0.02)) * aus_modifier),
+			men_plasgoot: Math.round(((male / 500) * 1.5) * aus_modifier),
+			women_wc: Math.round((female / 100) * aus_modifier),
+			men_wasbak: Math.round((male / 500) * aus_modifier),
+			women_wasbak: Math.round((female / 500) * aus_modifier)
+		};
+
+		const uk = {
+			name: "UK Model",
+			men_wc: Math.round(male / uk_modifier.wc_male),
+			men_urinoir: Math.round(male / uk_modifier.urinoir_male),
+			men_plasgoot: Math.round((male / uk_modifier.urinoir_male) / 2),
+			women_wc: Math.round(female / uk_modifier.wc_female),
+			men_wasbak: Math.round((male / uk_modifier.wc_male) / 10),
+			women_wasbak: Math.round((female / uk_modifier.wc_female) / 10)
+		};
+
+		const uk_campsite = {
+			name: "UK Kampeerterrein",
+			men_wc: Math.round(male / 150),
+			men_urinoir: Math.round(male / 250),
+			men_plasgoot: Math.round(male / 500),
+			women_wc: Math.round(female / 75),
+			men_wasbak: Math.round(male / 1500),
+			women_wasbak: Math.round(female / 750)
+		};
 
 		return (
 			<React.Fragment>
@@ -151,6 +211,9 @@ class Calculator extends React.Component
 	      <Grid container spacing={2}>
 	      	<Grid item xs={12}>
 	      		<Typography variant="h5">Uitkomst</Typography>
+	      	</Grid>
+	      	<Grid item xs={12}>
+	      		<Result rows={[australia, uk, uk_campsite]} />
 	      	</Grid>
 	      </Grid>
 	     </React.Fragment>
