@@ -203,7 +203,7 @@ class Calculator extends React.Component
 			            color="primary"
 			          />
 			        }
-			        label="Veel Alcohol"
+			        label="Redelijk veel Drank"
 		      	/>
 	      	</Grid>
 				</Grid>
