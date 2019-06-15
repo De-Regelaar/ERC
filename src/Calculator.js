@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Grid, Typography, TextField, FormControlLabel, Checkbox, Divider} from '@material-ui/core';
+import {Grid, Typography, TextField, FormControlLabel, Checkbox, Divider, Button} from '@material-ui/core';
 import Result from "./Result.js";
 
 class Calculator extends React.Component
@@ -18,10 +18,16 @@ class Calculator extends React.Component
 			alcohol: true
 		};
 
+		this.infoButtonClicked = this.infoButtonClicked.bind(this);
 		this.handlePeopleChange = this.handlePeopleChange.bind(this);
 		this.handleFemaleChange = this.handleFemaleChange.bind(this);
 		this.handleDurationChange = this.handleDurationChange.bind(this);
 		this.handleAlcoholChange = this.handleAlcoholChange.bind(this);
+	}
+
+	infoButtonClicked (event) 
+	{
+		alert("Alles wat je wil weten!");
 	}
 
 	handlePeopleChange (event) 
@@ -123,6 +129,7 @@ class Calculator extends React.Component
 				<Grid container spacing={2}>
 					<Grid item xs={12}>
 						<Typography variant="h5">Toilet Calculator </Typography>
+						<Button color="primary" onClick={this.infoButtonClicked}>info</Button>
 					</Grid>
 					<Grid item xs={12}>
 						<TextField 
