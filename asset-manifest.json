@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/regelaar-wc-calculator/static/css/main.2cce8147.chunk.css",
-    "main.js": "/regelaar-wc-calculator/static/js/main.eb35776b.chunk.js",
-    "main.js.map": "/regelaar-wc-calculator/static/js/main.eb35776b.chunk.js.map",
+    "main.css": "/regelaar-wc-calculator/static/css/main.ba49ec77.chunk.css",
+    "main.js": "/regelaar-wc-calculator/static/js/main.33a01c0a.chunk.js",
+    "main.js.map": "/regelaar-wc-calculator/static/js/main.33a01c0a.chunk.js.map",
     "runtime~main.js": "/regelaar-wc-calculator/static/js/runtime~main.aed79a59.js",
     "runtime~main.js.map": "/regelaar-wc-calculator/static/js/runtime~main.aed79a59.js.map",
     "static/js/2.735eb377.chunk.js": "/regelaar-wc-calculator/static/js/2.735eb377.chunk.js",
     "static/js/2.735eb377.chunk.js.map": "/regelaar-wc-calculator/static/js/2.735eb377.chunk.js.map",
     "index.html": "/regelaar-wc-calculator/index.html",
-    "precache-manifest.71d51fe0c05160959afbc1b86c145b88.js": "/regelaar-wc-calculator/precache-manifest.71d51fe0c05160959afbc1b86c145b88.js",
+    "precache-manifest.4dba3017c2d359c846bcbd786a5df52c.js": "/regelaar-wc-calculator/precache-manifest.4dba3017c2d359c846bcbd786a5df52c.js",
     "service-worker.js": "/regelaar-wc-calculator/service-worker.js",
-    "static/css/main.2cce8147.chunk.css.map": "/regelaar-wc-calculator/static/css/main.2cce8147.chunk.css.map"
+    "static/css/main.ba49ec77.chunk.css.map": "/regelaar-wc-calculator/static/css/main.ba49ec77.chunk.css.map"
   }
 }
