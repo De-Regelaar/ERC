@@ -13,13 +13,13 @@ class Calculator extends React.Component
 			visitors: 20000,
 			participants: 100,
 			personnel: 100,
-			male: 55,
+			female: 55,
 			duration: 9,
 			alcohol: true
 		};
 
 		this.handlePeopleChange = this.handlePeopleChange.bind(this);
-		this.handleMaleChange = this.handleMaleChange.bind(this);
+		this.handleFemaleChange = this.handleFemaleChange.bind(this);
 		this.handleDurationChange = this.handleDurationChange.bind(this);
 		this.handleAlcoholChange = this.handleAlcoholChange.bind(this);
 	}
@@ -32,13 +32,13 @@ class Calculator extends React.Component
 		}
 	}
 
-	handleMaleChange (event)
+	handleFemaleChange (event)
 	{
 		const value = parseInt(event.target.value)
 
 		if (!isNaN(value) && value >= 0 && value <= 100)
 		{
-			this.setState({male: event.target.value});
+			this.setState({female: event.target.value});
 		}
 	}
 
@@ -58,8 +58,8 @@ class Calculator extends React.Component
 	render () 
 	{
 		const t = this.state.visitors + this.state.participants + this.state.personnel
-		const male = t * this.state.male * 0.01;
-		const female = t * (100 - this.state.male) * 0.01;
+		const male = t * (100 - this.state.female) * 0.01;
+		const female = t * this.state.female * 0.01;
 
 		const aus_duration_modifier = this.state.duration >= 8 ? 1 : 
 																	this.state.duration >= 6 ? 0.8 :
@@ -91,7 +91,7 @@ class Calculator extends React.Component
 		let australia = {
 			name: "Australisch Model",
 			men_wc: Math.round((male / 500) * aus_modifier),
-			men_urinoir: Math.round((((male / 500) * 3) * (this.state.male * 0.02)) * aus_modifier),
+			men_urinoir: Math.round((((male / 500) * 3) * ((100 -this.state.female) * 0.02)) * aus_modifier),
 			men_plasgoot: Math.round(((male / 500) * 1.5) * aus_modifier),
 			women_wc: Math.round((female / 100) * aus_modifier),
 			men_wasbak: Math.round((male / 500) * aus_modifier),
@@ -166,20 +166,20 @@ class Calculator extends React.Component
 					</Grid>
 					<Grid item xs={6}>
 						<TextField
-							label = "% Man"
+							label = "% Vrouw / GN"
 							type = "number"
 							fullWidth
-							value = {this.state.male}
-							onChange = {this.handleMaleChange}
+							value = {this.state.female}
+							onChange = {this.handleFemaleChange}
 						/>
 					</Grid>
 					<Grid item xs={6}>
 						<TextField
-							label = "% Vrouw"
+							label = "% Man"
 							type = "number"
 							fullWidth
 							disabled
-							value = {100 - this.state.male}
+							value = {100 - this.state.female}
 						/>
 					</Grid>
 					<Grid item xs={12}>
