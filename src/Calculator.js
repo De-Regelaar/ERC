@@ -10,11 +10,11 @@ class Calculator extends React.Component
 		super(props);
 
 		this.state = {
-			visitors: 20000,
-			participants: 100,
-			personnel: 100,
-			female: 55,
-			duration: 9,
+			visitors: 10000,
+			participants: 10,
+			personnel: 50,
+			female: 50,
+			duration: 8,
 			alcohol: true
 		};
 
@@ -27,9 +27,13 @@ class Calculator extends React.Component
 
 	infoButtonClicked (event) 
 	{
-		alert("Alles wat je wil weten!");
+		alert("Bezoekers zijn personen die op het evenement komen; Deelnemers doen actief mee (zoals bij een obsticle run); Personeel zijn alle personen die werken op het evenement (inclusief vrijwilligers); Vrouwen en gender neutrale toiletten worden gelijkgesteld. Gebruik je dus alleen genderneutrale toiletten dan kan je hier 100% invullen.");
 	}
 
+infoButtonClicked2 (event) 
+	{
+		alert("Bij mannen moet het aantal WC plus het aantal uninoirs beschikbaar zijn. De urinoirs kunnen worden vervangen door plasgooten, hieronder in meters plasgoot uitgedrukt.");
+	}
 	handlePeopleChange (event) 
 	{
 		if (!isNaN(parseInt(event.target.value))) 
@@ -97,7 +101,7 @@ class Calculator extends React.Component
 		let australia = {
 			name: "Australisch Model",
 			men_wc: Math.round((male / 500) * aus_modifier),
-			men_urinoir: Math.round((((male / 500) * 3) * ((100 -this.state.female) * 0.02)) * aus_modifier),
+			men_urinoir: Math.round(((male / 500) * 3) * aus_modifier),
 			men_plasgoot: Math.round(((male / 500) * 1.5) * aus_modifier),
 			women_wc: Math.round((female / 100) * aus_modifier),
 			men_wasbak: Math.round((male / 500) * aus_modifier),
@@ -218,6 +222,8 @@ class Calculator extends React.Component
 	      <Grid container spacing={2}>
 	      	<Grid item xs={12}>
 	      		<Typography variant="h5">Uitkomst</Typography>
+
+	      		<Button color="primary" onClick={this.infoButtonClicked2}>uitleg</Button>
 	      	</Grid>
 	      	<Grid item xs={12}>
 	      		<Result rows={[australia, uk, uk_campsite]} />
