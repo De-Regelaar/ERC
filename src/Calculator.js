@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Grid, Typography, TextField, FormControlLabel, Checkbox, Divider, Button} from '@material-ui/core';
+import {Grid, Typography, TextField, FormControlLabel, Checkbox, Divider} from '@material-ui/core';
 import Result from "./Result.js";
 
 class Calculator extends React.Component
