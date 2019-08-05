@@ -91,7 +91,7 @@ class Calculator extends React.Component
 		}
 
 		let australia = {
-			name: "Australisch Model",
+			name: "Australisch model",
 			men_wc: Math.round((male / 500) * aus_modifier),
 			men_urinoir: Math.round(((male / 500) * 3) * aus_modifier),
 			men_plasgoot: Math.round(((male / 500) * 1.5) * aus_modifier),
@@ -101,7 +101,7 @@ class Calculator extends React.Component
 		};
 
 		const uk = {
-			name: "UK Model",
+			name: "UK model",
 			men_wc: Math.round(male / uk_modifier.wc_male),
 			men_urinoir: Math.round(male / uk_modifier.urinoir_male),
 			men_plasgoot: Math.round((male / uk_modifier.urinoir_male) / 2),
@@ -111,7 +111,7 @@ class Calculator extends React.Component
 		};
 
 		const uk_campsite = {
-			name: "UK Kampeerterrein",
+			name: "UK model kampeerterrein",
 			men_wc: Math.round(male / 150),
 			men_urinoir: Math.round(male / 250),
 			men_plasgoot: Math.round(male / 500),
@@ -124,14 +124,14 @@ class Calculator extends React.Component
 			<React.Fragment>
 				<Grid container spacing={2}>
 					<Grid item xs={12}>
-						<Typography variant="h5">Toilet Calculator </Typography>
+						<Typography variant="h5">WC-Calculator </Typography>
 						
 					</Grid>
 					<Grid item xs={12}>
 						<TextField 
 							id="visitors"
 							name="visitors"
-							label='Aantal Bezoekers' 
+							label='Aantal bezoekers' 
 							type="number"
 							fullWidth
 							value = {this.state.visitors} 
@@ -142,7 +142,7 @@ class Calculator extends React.Component
 						<TextField 
 							id="participants"
 							name="participants"
-							label='Aantal Deelnemers' 
+							label='Aantal deelnemers' 
 							type="number"
 							fullWidth
 							value = {this.state.participants} 
@@ -153,7 +153,7 @@ class Calculator extends React.Component
 						<TextField 
 							id="personnel"
 							name="personnel"
-							label='Aantal Personeel' 
+							label='Aantal personeel' 
 							type="number"
 							fullWidth
 							value = {this.state.personnel} 
@@ -162,7 +162,7 @@ class Calculator extends React.Component
 					</Grid>
 					<Grid item xs={12}>
 						<TextField 
-							label = "Totaal Mensen"
+							label = "Totaal mensen"
 							fullWidth
 							disabled
 							value={t}/>
@@ -189,7 +189,7 @@ class Calculator extends React.Component
 						<TextField 
 							id="duration"
 							name="duration"
-							label='Duur van Evenement (in uren)' 
+							label='Duur van evenement (in uren)' 
 							type="number"
 							fullWidth
 							value = {this.state.duration} 
@@ -206,7 +206,7 @@ class Calculator extends React.Component
 			            color="primary"
 			          />
 			        }
-			        label="Redelijk veel Drank"
+			        label="Redelijk veel drank"
 		      	/>
 	      	</Grid>
 				</Grid>
