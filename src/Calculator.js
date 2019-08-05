@@ -133,7 +133,7 @@ infoButtonClicked2 (event)
 				<Grid container spacing={2}>
 					<Grid item xs={12}>
 						<Typography variant="h5">Toilet Calculator </Typography>
-						<Button color="primary" onClick={this.infoButtonClicked}>info</Button>
+						
 					</Grid>
 					<Grid item xs={12}>
 						<TextField 
@@ -223,7 +223,7 @@ infoButtonClicked2 (event)
 	      	<Grid item xs={12}>
 	      		<Typography variant="h5">Uitkomst</Typography>
 
-	      		<Button color="primary" onClick={this.infoButtonClicked2}>uitleg</Button>
+	      		
 	      	</Grid>
 	      	<Grid item xs={12}>
 	      		<Result rows={[australia, uk, uk_campsite]} />
