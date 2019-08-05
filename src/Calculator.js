@@ -18,22 +18,14 @@ class Calculator extends React.Component
 			alcohol: true
 		};
 
-		this.infoButtonClicked = this.infoButtonClicked.bind(this);
+	
 		this.handlePeopleChange = this.handlePeopleChange.bind(this);
 		this.handleFemaleChange = this.handleFemaleChange.bind(this);
 		this.handleDurationChange = this.handleDurationChange.bind(this);
 		this.handleAlcoholChange = this.handleAlcoholChange.bind(this);
 	}
 
-	infoButtonClicked (event) 
-	{
-		alert("Bezoekers zijn personen die op het evenement komen; Deelnemers doen actief mee (zoals bij een obsticle run); Personeel zijn alle personen die werken op het evenement (inclusief vrijwilligers); Vrouwen en gender neutrale toiletten worden gelijkgesteld. Gebruik je dus alleen genderneutrale toiletten dan kan je hier 100% invullen.");
-	}
-
-infoButtonClicked2 (event) 
-	{
-		alert("Bij mannen moet het aantal WC plus het aantal uninoirs beschikbaar zijn. De urinoirs kunnen worden vervangen door plasgooten, hieronder in meters plasgoot uitgedrukt.");
-	}
+	
 	handlePeopleChange (event) 
 	{
 		if (!isNaN(parseInt(event.target.value))) 
