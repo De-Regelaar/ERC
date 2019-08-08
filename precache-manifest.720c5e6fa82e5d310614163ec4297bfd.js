@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "11f9de585d975e9fc22010781068f9a2",
+    "revision": "d621f8c8421c39fb09b7a1c548f84a40",
     "url": "/regelaar-wc-calculator/index.html"
   },
   {
-    "revision": "f39983bec8f57fd77f22",
+    "revision": "0936a20228ef3bf7be30",
     "url": "/regelaar-wc-calculator/static/css/main.ba49ec77.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/regelaar-wc-calculator/static/js/2.20d2c777.chunk.js"
   },
   {
-    "revision": "f39983bec8f57fd77f22",
-    "url": "/regelaar-wc-calculator/static/js/main.eeedf182.chunk.js"
+    "revision": "0936a20228ef3bf7be30",
+    "url": "/regelaar-wc-calculator/static/js/main.b00ed415.chunk.js"
   },
   {
     "revision": "3e0edb7819a80de2d16d",
