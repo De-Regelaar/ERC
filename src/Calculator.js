@@ -92,32 +92,32 @@ class Calculator extends React.Component
 
 		let australia = {
 			name: "Australisch model",
-			men_wc: Math.round((male / 500) * aus_modifier),
-			men_urinoir: Math.round(((male / 500) * 3) * aus_modifier),
-			men_plasgoot: Math.round(((male / 500) * 1.5) * aus_modifier),
-			women_wc: Math.round((female / 100) * aus_modifier),
-			men_wasbak: Math.round((male / 500) * aus_modifier),
-			women_wasbak: Math.round((female / 500) * aus_modifier)
+			men_wc: Math.ceil((male / 500) * aus_modifier),
+			men_urinoir: Math.ceil(((male / 500) * 3) * aus_modifier),
+			men_plasgoot: Math.ceil(((male / 500) * 1.5) * aus_modifier),
+			women_wc: Math.ceil((female / 100) * aus_modifier),
+			men_wasbak: Math.ceil((male / 500) * aus_modifier),
+			women_wasbak: Math.ceil((female / 500) * aus_modifier)
 		};
 
 		const uk = {
 			name: "UK model",
-			men_wc: Math.round(male / uk_modifier.wc_male),
-			men_urinoir: Math.round(male / uk_modifier.urinoir_male),
-			men_plasgoot: Math.round((male / uk_modifier.urinoir_male) / 2),
-			women_wc: Math.round(female / uk_modifier.wc_female),
-			men_wasbak: Math.round((male / uk_modifier.wc_male) / 10),
-			women_wasbak: Math.round((female / uk_modifier.wc_female) / 10)
+			men_wc: Math.ceil(male / uk_modifier.wc_male),
+			men_urinoir: Math.ceil(male / uk_modifier.urinoir_male),
+			men_plasgoot: Math.ceil((male / uk_modifier.urinoir_male) / 2),
+			women_wc: Math.ceil(female / uk_modifier.wc_female),
+			men_wasbak: Math.ceil((male / uk_modifier.wc_male) / 10),
+			women_wasbak: Math.ceil((female / uk_modifier.wc_female) / 10)
 		};
 
 		const uk_campsite = {
 			name: "UK model kampeerterrein",
-			men_wc: Math.round(male / 150),
-			men_urinoir: Math.round(male / 250),
-			men_plasgoot: Math.round(male / 500),
-			women_wc: Math.round(female / 75),
-			men_wasbak: Math.round(male / 1500),
-			women_wasbak: Math.round(female / 750)
+			men_wc: Math.ceil(male / 150),
+			men_urinoir: Math.ceil(male / 250),
+			men_plasgoot: Math.ceil(male / 500),
+			women_wc: Math.ceil(female / 75),
+			men_wasbak: Math.ceil(male / 1500),
+			women_wasbak: Math.ceil(female / 750)
 		};
 
 		return (
