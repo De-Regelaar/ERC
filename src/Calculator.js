@@ -1,6 +1,13 @@
 import React from 'react';
 
 import {Grid, Typography, TextField, FormControlLabel, Checkbox, Divider} from '@material-ui/core';
+
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
 import Result from "./Result.js";
 
 class Calculator extends React.Component
@@ -10,205 +17,210 @@ class Calculator extends React.Component
 		super(props);
 
 		this.state = {
-			visitors: 10000,
-			participants: 10,
-			personnel: 50,
-			female: 50,
-			duration: 8,
-			alcohol: true
+			bezoekers: 100,
+			gezelschap: 10,
+			binnen: false,
+			doorstroom: false,
+			terras: false,
 		};
 
 	
-		this.handlePeopleChange = this.handlePeopleChange.bind(this);
-		this.handleFemaleChange = this.handleFemaleChange.bind(this);
-		this.handleDurationChange = this.handleDurationChange.bind(this);
-		this.handleAlcoholChange = this.handleAlcoholChange.bind(this);
+		this.handleBezoekersChange = this.handleBezoekersChange.bind(this);
+		this.handleGezelschapChange = this.handleGezelschapChange.bind(this);
+		this.handleVeiligheidsregioChange = this.handleVeiligheidsregioChange.bind(this);
+		this.handleBinnenChange = this.handleBinnenChange.bind(this);
+		this.handleDoorstroomChange = this.handleDoorstroomChange.bind(this);
+		this.handleTerrasChange = this.handleTerrasChange.bind(this);
 	}
 
 	
-	handlePeopleChange (event) 
+	handleBezoekersChange (event) 
 	{
 		if (!isNaN(parseInt(event.target.value))) 
 		{
 			this.setState({[event.target.name]: parseInt(event.target.value)});
 		}
 	}
-
-	handleFemaleChange (event)
-	{
-		const value = parseInt(event.target.value)
-
-		if (!isNaN(value) && value >= 0 && value <= 100)
-		{
-			this.setState({female: event.target.value});
-		}
-	}
-
-	handleDurationChange (event)
+	handleGezelschapChange (event)
 	{
 		if (!isNaN(parseInt(event.target.value))) 
 		{
-			this.setState({"duration": parseInt(event.target.value)});
+			this.setState({"gezelschap": parseInt(event.target.value)});
 		}
+	}	
+	handleVeiligheidsregioChange (event) 
+	{
+		this.setState({"veiligheidsregio": event.target.value});
 	}
 
-	handleAlcoholChange (event) 
+	handleBinnenChange (event) 
 	{
-		this.setState({"alcohol": event.target.checked});
+		this.setState({"binnen": event.target.checked});
+	}
+
+	handleDoorstroomChange (event) 
+	{
+		this.setState({"doorstroom": event.target.checked});
+	}
+
+	handleTerrasChange (event) 
+	{
+		this.setState({"terras": event.target.checked});
 	}
 
 	render () 
 	{
-		const t = this.state.visitors + this.state.participants + this.state.personnel
-		const male = t * (100 - this.state.female) * 0.01;
-		const female = t * this.state.female * 0.01;
-
-		const aus_duration_modifier = this.state.duration >= 8 ? 1 : 
-																	this.state.duration >= 6 ? 0.8 :
-																	this.state.duration >= 4 ? 0.75 :
-																	0.7;
-		const aus_alcohol_modifer = this.state.alcohol ? 1 : 0.5;
-		const aus_modifier = aus_duration_modifier * aus_alcohol_modifer;
-
-		let uk_modifier = {};
-		if (this.state.duration >= 6 && this.state.alcohol) 
-		{
-			uk_modifier.wc_male = 400;
-			uk_modifier.urinoir_male = 100;
-			uk_modifier.wc_female = 75;
-		}
-		else if (this.state.duration >= 6)
-		{
-			uk_modifier.wc_male = 425;
-			uk_modifier.urinoir_male = 125;
-			uk_modifier.wc_female = 85;		
-		}
-		else 
-		{
-			uk_modifier.wc_male = 500;
-			uk_modifier.urinoir_male = 150;
-			uk_modifier.wc_female = 100;
-		}
-
-		let australia = {
-			name: "Australisch model",
-			men_wc: Math.ceil((male / 500) * aus_modifier),
-			men_urinoir: Math.ceil(((male / 500) * 3) * aus_modifier),
-			men_plasgoot: Math.ceil(((male / 500) * 1.5) * aus_modifier),
-			women_wc: Math.ceil((female / 100) * aus_modifier),
-			men_wasbak: Math.ceil((male / 500) * aus_modifier),
-			women_wasbak: Math.ceil((female / 500) * aus_modifier)
+		
+				
+		let verboden = {		
+			name: "Verboden?",
+			uitkomst: (this.state.gezelschap >=50)?"ja":"nee",
+			grens: "50 of meer personen in een gezelschap",
 		};
 
-		const uk = {
-			name: "UK model",
-			men_wc: Math.ceil(male / uk_modifier.wc_male),
-			men_urinoir: Math.ceil(male / uk_modifier.urinoir_male),
-			men_plasgoot: Math.ceil((male / uk_modifier.urinoir_male) / 2),
-			women_wc: Math.ceil(female / uk_modifier.wc_female),
-			men_wasbak: Math.ceil((male / uk_modifier.wc_male) / 10),
-			women_wasbak: Math.ceil((female / uk_modifier.wc_female) / 10)
+		const melding = {
+			name: "Melding doen",
+			uitkomst:(this.state.bezoekers >=50) && (this.state.veiligheidsregio>=70)?"ja":"nee",
+			grens: "50 of meer bezoekers in regio's in categorie 2",
 		};
 
-		const uk_campsite = {
-			name: "UK model kampeerterrein",
-			men_wc: Math.ceil(male / 150),
-			men_urinoir: Math.ceil(male / 250),
-			men_plasgoot: Math.ceil(male / 500),
-			women_wc: Math.ceil(female / 75),
-			men_wasbak: Math.ceil(male / 1500),
-			women_wasbak: Math.ceil(female / 750)
+		const placeren = {
+			name: "Bezoeker placeren",
+			uitkomst: ((this.state.bezoekers>=250) && (this.state.binnen<1) && (this.state.doorstroom<1)) 
+			|| ((this.state.binnen>=1) && (this.state.doorstroom<1))
+			|| (this.state.terras>=1)?"ja":"nee",
+			grens: "Binnen moet altijd worden geplaceerd. Buiten is dat verplict vanaf 250 bezoekers. Bij doorstroom evenement nooit.",
 		};
-
+		const check = {
+			name: "Gezondheidscheck",
+			uitkomst: ((this.state.bezoekers>=250) && (this.state.binnen<1) && (this.state.doorstroom<1))
+			 || ((this.state.bezoekers>=100) && (this.state.binnen>=1) && (this.state.doorstroom<1))
+			 || (this.state.terras>=1) ? "ja":"nee",
+			grens: "Binnen vanaf 100 bezoekers, buiten bij vanaf 250. Bij doorstroom evenement nooit.",
+		};
 		return (
 			<React.Fragment>
-				<Grid container spacing={2}>
+				<Grid container spacing={2} 
+				justify="flex-start">
 					<Grid item xs={12}>
-						<Typography variant="h5">WC-Calculator </Typography>
+						<Typography variant="h4">Corona regels bij evenementen </Typography>
 						
 					</Grid>
 					<Grid item xs={12}>
 						<TextField 
-							id="visitors"
-							name="visitors"
+							id="bezoekers"
+							name="bezoekers"
 							label='Aantal bezoekers' 
 							type="number"
 							fullWidth
-							value = {this.state.visitors} 
-							onChange={this.handlePeopleChange}
+							value = {this.state.bezoekers} 
+							onChange={this.handleBezoekersChange}
 						/>
 					</Grid>
+				
 					<Grid item xs={12}>
 						<TextField 
-							id="participants"
-							name="participants"
-							label='Aantal deelnemers' 
+							id="gezelschap"
+							name="gezelschap"
+							label='Maximale grote gezelschap' 
 							type="number"
 							fullWidth
-							value = {this.state.participants} 
-							onChange={this.handlePeopleChange}
+							value = {this.state.gezelschap} 
+							onChange={this.handleGezelschapChange}
 						/>
 					</Grid>
+					
+					<Grid item xs={12}
+					justify="left">
+												
+						 <FormControl required>
+        <InputLabel id="VR">Veiligheidsregio</InputLabel>
+        <Select
+          labelId="veiligheidsregio"
+          id="veiligheidsregio"
+          value={this.state.veiligheidsregio}
+          onChange={this.handleVeiligheidsregioChange}
+                  >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={100 }>	    Amsterdam-Amstelland		</MenuItem>
+<MenuItem value={2 }>	    Brabant-Noord		</MenuItem>
+<MenuItem value={3 }>	    Brabant-Zuidoost		</MenuItem>
+<MenuItem value={4 }>	    Drenthe		</MenuItem>
+<MenuItem value={5 }>	    Flevoland		</MenuItem>
+<MenuItem value={6 }>	    Friesland		</MenuItem>
+<MenuItem value={7 }>	    Gelderland-Midden		</MenuItem>
+<MenuItem value={8 }>	    Gelderland-Zuid		</MenuItem>
+<MenuItem value={9 }>	    Gooi en Vechtstreek		</MenuItem>
+<MenuItem value={10 }>	    Groningen		</MenuItem>
+<MenuItem value={1100 }>	    Haaglanden		</MenuItem>
+<MenuItem value={1200 }>	    Hollands Midden		</MenuItem>
+<MenuItem value={13 }>	    IJsselland		</MenuItem>
+<MenuItem value={1400 }>	    Kennemerland		</MenuItem>
+<MenuItem value={15 }>	    Limburg-Noord		</MenuItem>
+<MenuItem value={16 }>	    Midden- en West-Brabant		</MenuItem>
+<MenuItem value={17 }>	    Noord- en Oost-Gelderland		</MenuItem>
+<MenuItem value={18 }>	    Noord-Holland Noord		</MenuItem>
+<MenuItem value={1900 }>	    Rotterdam-Rijnmond		</MenuItem>
+<MenuItem value={20 }>	    Twente		</MenuItem>
+<MenuItem value={2100 }>	    Utrecht		</MenuItem>
+<MenuItem value={22 }>	    Zaanstreek-Waterland		</MenuItem>
+<MenuItem value={23 }>	    Zeeland		</MenuItem>
+<MenuItem value={24 }>	    Zuid-Holland Zuid		</MenuItem>
+<MenuItem value={25 }>	    Zuid-Limburg		</MenuItem>
+        </Select>
+        <FormHelperText>In welke Veiligheidsregio vind het plaats?</FormHelperText>
+      </FormControl>
+
+		
+					</Grid>
+
+
 					<Grid item xs={12}>
-						<TextField 
-							id="personnel"
-							name="personnel"
-							label='Aantal personeel' 
-							type="number"
-							fullWidth
-							value = {this.state.personnel} 
-							onChange={this.handlePeopleChange}
-						/>
-					</Grid>
-					<Grid item xs={12}>
-						<TextField 
-							label = "Totaal mensen"
-							fullWidth
-							disabled
-							value={t}/>
-					</Grid>
-					<Grid item xs={6}>
-						<TextField
-							label = "% Vrouw / GN"
-							type = "number"
-							fullWidth
-							value = {this.state.female}
-							onChange = {this.handleFemaleChange}
-						/>
-					</Grid>
-					<Grid item xs={6}>
-						<TextField
-							label = "% Man"
-							type = "number"
-							fullWidth
-							disabled
-							value = {100 - this.state.female}
-						/>
-					</Grid>
-					<Grid item xs={12}>
-						<TextField 
-							id="duration"
-							name="duration"
-							label='Duur van evenement (in uren)' 
-							type="number"
-							fullWidth
-							value = {this.state.duration} 
-							onChange={this.handleDurationChange}
-						/>
+					<Typography variant="h5">Is er op het evenement sprake van een hieronder staande situatie? </Typography>
 					</Grid>
 					<Grid item xs={12}>
 						<FormControlLabel
 		        	control={
 			          <Checkbox
-			            checked={this.state.alcohol}
-			            onChange={this.handleAlcoholChange}
+			            checked={this.state.doorstroom}
+			            onChange={this.handleDoorstroomChange}
 			            value="checkedB"
 			            color="primary"
 			          />
 			        }
-			        label="Redelijk veel drank"
+			        label="Is er sprake van een evenement met doorstroom?"
 		      	/>
 	      	</Grid>
+
+	      	<Grid item xs={12}>
+						<FormControlLabel
+		        	control={
+			          <Checkbox
+			            checked={this.state.binnen}
+			            onChange={this.handleBinnenChange}
+			            value="checkedB"
+			            color="primary"
+			          />
+			        }
+			        label="Vind het evenement binnen plaats?"
+		      	/>
+	      	</Grid>
+<Grid item xs={12}>
+						<FormControlLabel
+		        	control={
+			          <Checkbox
+			            checked={this.state.terras}
+			            onChange={this.handleTerrasChange}
+			            value="checkedB"
+			            color="primary"
+			          />
+			        }
+			        label="Is er sprake van een buitenterras (eet- of drink gelegenheid)?"
+		      	/>
+	      	</Grid>
+
 				</Grid>
 	      <Divider variant="middle"/>	
 	      <Grid container spacing={2}>
@@ -218,7 +230,7 @@ class Calculator extends React.Component
 	      		
 	      	</Grid>
 	      	<Grid item xs={12}>
-	      		<Result rows={[australia, uk, uk_campsite]} />
+	      		<Result rows={[verboden, melding, placeren, check]} />
 	      	</Grid>
 	      </Grid>
 	     </React.Fragment>
