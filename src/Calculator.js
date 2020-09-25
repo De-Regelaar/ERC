@@ -176,7 +176,7 @@ class Calculator extends React.Component
 <MenuItem value={210 }>	    Zaanstreek-Waterland		</MenuItem>
 <MenuItem value={23 }>	    Zeeland		</MenuItem>
 <MenuItem value={211 }>	    Zuid-Holland Zuid		</MenuItem>
-<MenuItem value={25 }>	    Zuid-Limburg		</MenuItem>
+<MenuItem value={24 }>	    Zuid-Limburg		</MenuItem>
         </Select>
         <FormHelperText>In welke Veiligheidsregio vindt het plaats?</FormHelperText>
       </FormControl>
