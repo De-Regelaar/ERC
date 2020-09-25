@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Corona maatregelen evenementen",
-  "homepage": "https://github.com/De-Regelaar/ERC",
+  "homepage": "https://de-regelaar.github.io/ERC/",
   
   "dependencies": {
     "@material-ui/core": "^4.0.2",
