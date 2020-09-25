@@ -161,7 +161,7 @@ class Calculator extends React.Component
 <MenuItem value={12 }>	    Gelderland-Midden		</MenuItem>
 <MenuItem value={203 }>	    Gelderland-Zuid		</MenuItem>
 <MenuItem value={204 }>	    Gooi en Vechtstreek		</MenuItem>
-<MenuItem value={13 }>	    Groningen		</MenuItem>
+<MenuItem value={213 }>	    Groningen		</MenuItem>
 <MenuItem value={205 }>	    Haaglanden		</MenuItem>
 <MenuItem value={206 }>	    Hollands Midden		</MenuItem>
 <MenuItem value={14 }>	    IJsselland		</MenuItem>
