@@ -89,7 +89,7 @@ class Calculator extends React.Component
 			uitkomst: ((this.state.bezoekers>=250) && (this.state.binnen<1) && (this.state.doorstroom<1)) 
 			|| ((this.state.binnen>=1) && (this.state.doorstroom<1))
 			|| (this.state.terras>=1)?<Typography color='Secondary'>ja</Typography>:"nee",
-			grens: "Binnen moet altijd worden geplaceerd. Buiten is dat verplict vanaf 250 bezoekers. Bij evenement met doorstroom nooit.",
+			grens: "Binnen moet altijd worden geplaceerd. Buiten is dat verplicht vanaf 250 bezoekers. Bij evenement met doorstroom nooit.",
 		};
 		const check = {
 			name: "Gezondheidscheck",
@@ -242,7 +242,7 @@ class Calculator extends React.Component
 	      		<Result rows={[verboden, melding, placeren, check]} />
 	      	</Grid>
 	      	<Grid item xs={12}>
-	      		<Typography variant="subtitle" color="TextSecondary">Voor meer informatie over de definities en locale regels wordt u verwezen naar de website van de relevante veiligheidsregio.</Typography>
+	      		<Typography variant="subtitle" color="TextSecondary">Voor meer informatie over de definities en lokale regels wordt u verwezen naar de website van de relevante veiligheidsregio.</Typography>
 	      	</Grid>
 	      </Grid>
 	     </React.Fragment>
