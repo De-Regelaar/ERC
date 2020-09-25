@@ -89,7 +89,7 @@ class Calculator extends React.Component
 			uitkomst: ((this.state.bezoekers>=250) && (this.state.binnen<1) && (this.state.doorstroom<1)) 
 			|| ((this.state.binnen>=1) && (this.state.doorstroom<1))
 			|| (this.state.terras>=1)?<Typography color='Secondary'>ja</Typography>:"nee",
-			grens: "Binnen moet altijd worden geplaceerd. Buiten is dat verplicht vanaf 250 bezoekers. Bij evenement met doorstroom nooit.",
+			grens: "Binnen moet bij alle aantallen worden geplaceerd. Buiten is dat verplicht vanaf 250 bezoekers. Voor beide is er een uitzondering in het geval van continue doorstroom.",
 		};
 		const check = {
 			name: "Gezondheidscheck",
@@ -107,12 +107,13 @@ class Calculator extends React.Component
 						
 					</Grid>
 					<Grid item xs={12}>
-						<Typography color='TextSecondary'>Versie 25 september 2020 </Typography>
+						<Typography color='primary'>Versie 25 september 2020 </Typography>
 						<Typography variant="body2" color='secondary'> Dit formulier is een hulpmiddel, er kunnen geen rechten ontleend worden aan de uitslag. </Typography>
 						<Typography variant="body2" color='secondary'> In verschillende regio's kunnen aanvullende maatregelen gelden die niet in dit formulier zijn opgenomen. </Typography>
 						<Typography variant="body1" color='TextSecondary'> Vul het formulier volledig in voor het beste resultaat. </Typography>
 					</Grid>
-					<Grid item xs={12}>
+					<Grid item xs={12}
+					align="left">
 						<TextField 
 							id="bezoekers"
 							name="bezoekers"
@@ -124,7 +125,8 @@ class Calculator extends React.Component
 						/>
 					</Grid>
 				
-					<Grid item xs={12}>
+					<Grid item xs={12}
+					align="left">
 						<TextField 
 							id="gezelschap"
 							name="gezelschap"
