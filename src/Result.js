@@ -18,9 +18,9 @@ class Result extends React.Component
         <Table size="small">
         <TableHead> 
         	<TableRow>
-        		<TableCell />
-        		<TableCell colspan={1}>Uitkomst</TableCell>
-        		<TableCell colspan={2}>Grens</TableCell>
+        		<TableCell colspan={1}></TableCell>
+        		<TableCell colspan={1}></TableCell>
+        		<TableCell colspan={2}></TableCell>
         		
         	</TableRow>
           

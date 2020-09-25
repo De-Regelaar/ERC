@@ -186,7 +186,7 @@ class Calculator extends React.Component
 
 
 					<Grid item xs={12}>
-					<Typography variant="h5">Is er op het evenement sprake van een hieronder staande situatie? </Typography>
+					<Typography variant="h6">Is er op het evenement sprake van een hieronder staande situatie? </Typography>
 					</Grid>
 					<Grid item xs={12}
 					align="left">
@@ -236,7 +236,7 @@ class Calculator extends React.Component
 	      <Divider variant="middle"/>	
 	      <Grid container spacing={2}>
 	      	<Grid item xs={12}>
-	      		<Typography variant="h5">Uitkomst</Typography>
+	      		<Typography variant="h5">Resultaten</Typography>
 
 	      		
 	      	</Grid>
