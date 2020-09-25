@@ -74,13 +74,13 @@ class Calculator extends React.Component
 				
 		let verboden = {		
 			name: "Verboden?",
-			uitkomst: (this.state.gezelschap >=50)?"ja":"nee",
-			grens: "50 of meer personen in een gezelschap",
+			uitkomst: (this.state.gezelschap >=50) && (this.state.veiligheidsregio>=70)?<Typography color='Secondary'>ja</Typography>:"nee",
+			grens: "In categorie 2 regio's kunnen geen evenementen plaatsvinden met grote gezelschappen. Ook niet na een melding.",
 		};
 
 		const melding = {
 			name: "Melding doen",
-			uitkomst:(this.state.bezoekers >=50) && (this.state.veiligheidsregio>=70)?"ja":"nee",
+			uitkomst:(this.state.bezoekers >=50) && (this.state.veiligheidsregio>=70)?<Typography color='Secondary'>ja</Typography>:"nee",
 			grens: "50 of meer bezoekers in regio's in categorie 2",
 		};
 
@@ -88,14 +88,14 @@ class Calculator extends React.Component
 			name: "Bezoeker placeren",
 			uitkomst: ((this.state.bezoekers>=250) && (this.state.binnen<1) && (this.state.doorstroom<1)) 
 			|| ((this.state.binnen>=1) && (this.state.doorstroom<1))
-			|| (this.state.terras>=1)?"ja":"nee",
+			|| (this.state.terras>=1)?<Typography color='Secondary'>ja</Typography>:"nee",
 			grens: "Binnen moet altijd worden geplaceerd. Buiten is dat verplict vanaf 250 bezoekers. Bij doorstroom evenement nooit.",
 		};
 		const check = {
 			name: "Gezondheidscheck",
 			uitkomst: ((this.state.bezoekers>=250) && (this.state.binnen<1) && (this.state.doorstroom<1))
 			 || ((this.state.bezoekers>=100) && (this.state.binnen>=1) && (this.state.doorstroom<1))
-			 || (this.state.terras>=1) ? "ja":"nee",
+			 || (this.state.terras>=1) ? <Typography color='Secondary'>ja</Typography>:"nee",
 			grens: "Binnen vanaf 100 bezoekers, buiten bij vanaf 250. Bij doorstroom evenement nooit.",
 		};
 		return (
@@ -107,10 +107,16 @@ class Calculator extends React.Component
 						
 					</Grid>
 					<Grid item xs={12}>
+						<Typography color='TextSecondary'>Versie 25 September 2020 </Typography>
+						<Typography variant="body2" color='secondary'> Dit formulier is een hulpmiddel, er kunnen geen rechten ontleend worden aan de uitslag. </Typography>
+						<Typography variant="body2" color='secondary'> In verschillende regio's gelden aanvullende maatregelen die niet in dit formulier zijn opgenomen. </Typography>
+						<Typography variant="body1" color='TextSecondary'> Vul het formulier volledig in voor het beste resultaat </Typography>
+					</Grid>
+					<Grid item xs={12}>
 						<TextField 
 							id="bezoekers"
 							name="bezoekers"
-							label='Aantal bezoekers' 
+							label='Totaal aantal bezoekers' 
 							type="number"
 							fullWidth
 							value = {this.state.bezoekers} 
@@ -122,7 +128,7 @@ class Calculator extends React.Component
 						<TextField 
 							id="gezelschap"
 							name="gezelschap"
-							label='Maximale grote gezelschap' 
+							label='Hoeveel personen in het grootste aanwezige gezelschap?' 
 							type="number"
 							fullWidth
 							value = {this.state.gezelschap} 
@@ -131,7 +137,7 @@ class Calculator extends React.Component
 					</Grid>
 					
 					<Grid item xs={12}
-					justify="left">
+					align="left">
 												
 						 <FormControl required>
         <InputLabel id="VR">Veiligheidsregio</InputLabel>
@@ -180,7 +186,8 @@ class Calculator extends React.Component
 					<Grid item xs={12}>
 					<Typography variant="h5">Is er op het evenement sprake van een hieronder staande situatie? </Typography>
 					</Grid>
-					<Grid item xs={12}>
+					<Grid item xs={12}
+					align="left">
 						<FormControlLabel
 		        	control={
 			          <Checkbox
@@ -190,11 +197,12 @@ class Calculator extends React.Component
 			            color="primary"
 			          />
 			        }
-			        label="Is er sprake van een evenement met doorstroom?"
+			        label=<Typography variant="body2">Is er sprake van een evenement met doorstroom?</Typography>
 		      	/>
 	      	</Grid>
 
-	      	<Grid item xs={12}>
+	      	<Grid item xs={12}
+	      	align="left">
 						<FormControlLabel
 		        	control={
 			          <Checkbox
@@ -204,10 +212,11 @@ class Calculator extends React.Component
 			            color="primary"
 			          />
 			        }
-			        label="Vind het evenement binnen plaats?"
+			        label=<Typography variant="body2">Vind het evenement binnen plaats?</Typography>
 		      	/>
 	      	</Grid>
-<Grid item xs={12}>
+			<Grid item xs={12}
+				align="left">
 						<FormControlLabel
 		        	control={
 			          <Checkbox
@@ -217,7 +226,7 @@ class Calculator extends React.Component
 			            color="primary"
 			          />
 			        }
-			        label="Is er sprake van een buitenterras (eet- of drink gelegenheid)?"
+			        label=<Typography variant="body2">Is er sprake van een buitenterras (eet- of drink gelegenheid)?</Typography>
 		      	/>
 	      	</Grid>
 
