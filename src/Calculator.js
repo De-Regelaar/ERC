@@ -74,14 +74,14 @@ class Calculator extends React.Component
 				
 		let verboden = {		
 			name: "Verboden?",
-			uitkomst: (this.state.gezelschap >=50) && (this.state.veiligheidsregio>=70)?<Typography color='Secondary'>ja</Typography>:"nee",
-			grens: "In categorie 2 regio's kunnen geen evenementen plaatsvinden met grote gezelschappen. Ook niet na een melding.",
+			uitkomst: (this.state.gezelschap >=50) && (this.state.veiligheidsregio>=199)?<Typography color='Secondary'>ja</Typography>:"nee",
+			grens: "In regio's die in risiconiveau 2 vallen kunnen geen evenementen plaatsvinden met grote gezelschappen. Ook niet na een melding.",
 		};
 
 		const melding = {
 			name: "Melding doen",
-			uitkomst:(this.state.bezoekers >=50) && (this.state.veiligheidsregio>=70)?<Typography color='Secondary'>ja</Typography>:"nee",
-			grens: "50 of meer bezoekers in regio's in categorie 2.",
+			uitkomst:(this.state.bezoekers >=50) && (this.state.veiligheidsregio>=199)?<Typography color='Secondary'>ja</Typography>:"nee",
+			grens: "50 of meer bezoekers in regio's in risiconiveau 2.",
 		};
 
 		const placeren = {
@@ -153,29 +153,29 @@ class Calculator extends React.Component
             <em></em>
           </MenuItem>
           <MenuItem value={100 }>	    Amsterdam-Amstelland		</MenuItem>
-<MenuItem value={2 }>	    Brabant-Noord		</MenuItem>
-<MenuItem value={3 }>	    Brabant-Zuidoost		</MenuItem>
+<MenuItem value={200 }>	    Brabant-Noord		</MenuItem>
+<MenuItem value={201 }>	    Brabant-Zuidoost		</MenuItem>
 <MenuItem value={4 }>	    Drenthe		</MenuItem>
-<MenuItem value={5 }>	    Flevoland		</MenuItem>
+<MenuItem value={202 }>	    Flevoland		</MenuItem>
 <MenuItem value={6 }>	    Friesland		</MenuItem>
 <MenuItem value={7 }>	    Gelderland-Midden		</MenuItem>
-<MenuItem value={8 }>	    Gelderland-Zuid		</MenuItem>
-<MenuItem value={9 }>	    Gooi en Vechtstreek		</MenuItem>
+<MenuItem value={203 }>	    Gelderland-Zuid		</MenuItem>
+<MenuItem value={204 }>	    Gooi en Vechtstreek		</MenuItem>
 <MenuItem value={10 }>	    Groningen		</MenuItem>
-<MenuItem value={1100 }>	    Haaglanden		</MenuItem>
-<MenuItem value={1200 }>	    Hollands Midden		</MenuItem>
+<MenuItem value={205 }>	    Haaglanden		</MenuItem>
+<MenuItem value={206 }>	    Hollands Midden		</MenuItem>
 <MenuItem value={13 }>	    IJsselland		</MenuItem>
-<MenuItem value={1400 }>	    Kennemerland		</MenuItem>
+<MenuItem value={207 }>	    Kennemerland		</MenuItem>
 <MenuItem value={15 }>	    Limburg-Noord		</MenuItem>
 <MenuItem value={16 }>	    Midden- en West-Brabant		</MenuItem>
 <MenuItem value={17 }>	    Noord- en Oost-Gelderland		</MenuItem>
 <MenuItem value={18 }>	    Noord-Holland Noord		</MenuItem>
-<MenuItem value={1900 }>	    Rotterdam-Rijnmond		</MenuItem>
+<MenuItem value={208 }>	    Rotterdam-Rijnmond		</MenuItem>
 <MenuItem value={20 }>	    Twente		</MenuItem>
-<MenuItem value={2100 }>	    Utrecht		</MenuItem>
-<MenuItem value={22 }>	    Zaanstreek-Waterland		</MenuItem>
+<MenuItem value={209 }>	    Utrecht		</MenuItem>
+<MenuItem value={210 }>	    Zaanstreek-Waterland		</MenuItem>
 <MenuItem value={23 }>	    Zeeland		</MenuItem>
-<MenuItem value={24 }>	    Zuid-Holland Zuid		</MenuItem>
+<MenuItem value={211 }>	    Zuid-Holland Zuid		</MenuItem>
 <MenuItem value={25 }>	    Zuid-Limburg		</MenuItem>
         </Select>
         <FormHelperText>In welke Veiligheidsregio vindt het plaats?</FormHelperText>
