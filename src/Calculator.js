@@ -152,19 +152,19 @@ class Calculator extends React.Component
           <MenuItem value="">
             <em></em>
           </MenuItem>
-          <MenuItem value={100 }>	    Amsterdam-Amstelland		</MenuItem>
+<MenuItem value={212 }>	    Amsterdam-Amstelland		</MenuItem>
 <MenuItem value={200 }>	    Brabant-Noord		</MenuItem>
 <MenuItem value={201 }>	    Brabant-Zuidoost		</MenuItem>
-<MenuItem value={4 }>	    Drenthe		</MenuItem>
+<MenuItem value={10 }>	    Drenthe		</MenuItem>
 <MenuItem value={202 }>	    Flevoland		</MenuItem>
-<MenuItem value={6 }>	    Friesland		</MenuItem>
-<MenuItem value={7 }>	    Gelderland-Midden		</MenuItem>
+<MenuItem value={11 }>	    Friesland		</MenuItem>
+<MenuItem value={12 }>	    Gelderland-Midden		</MenuItem>
 <MenuItem value={203 }>	    Gelderland-Zuid		</MenuItem>
 <MenuItem value={204 }>	    Gooi en Vechtstreek		</MenuItem>
-<MenuItem value={10 }>	    Groningen		</MenuItem>
+<MenuItem value={13 }>	    Groningen		</MenuItem>
 <MenuItem value={205 }>	    Haaglanden		</MenuItem>
 <MenuItem value={206 }>	    Hollands Midden		</MenuItem>
-<MenuItem value={13 }>	    IJsselland		</MenuItem>
+<MenuItem value={14 }>	    IJsselland		</MenuItem>
 <MenuItem value={207 }>	    Kennemerland		</MenuItem>
 <MenuItem value={15 }>	    Limburg-Noord		</MenuItem>
 <MenuItem value={16 }>	    Midden- en West-Brabant		</MenuItem>
