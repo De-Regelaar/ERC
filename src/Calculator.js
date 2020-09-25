@@ -81,7 +81,7 @@ class Calculator extends React.Component
 		const melding = {
 			name: "Melding doen",
 			uitkomst:(this.state.bezoekers >=50) && (this.state.veiligheidsregio>=70)?<Typography color='Secondary'>ja</Typography>:"nee",
-			grens: "50 of meer bezoekers in regio's in categorie 2",
+			grens: "50 of meer bezoekers in regio's in categorie 2.",
 		};
 
 		const placeren = {
@@ -89,7 +89,7 @@ class Calculator extends React.Component
 			uitkomst: ((this.state.bezoekers>=250) && (this.state.binnen<1) && (this.state.doorstroom<1)) 
 			|| ((this.state.binnen>=1) && (this.state.doorstroom<1))
 			|| (this.state.terras>=1)?<Typography color='Secondary'>ja</Typography>:"nee",
-			grens: "Binnen moet altijd worden geplaceerd. Buiten is dat verplict vanaf 250 bezoekers. Bij doorstroom evenement nooit.",
+			grens: "Binnen moet altijd worden geplaceerd. Buiten is dat verplict vanaf 250 bezoekers. Bij evenement met doorstroom nooit.",
 		};
 		const check = {
 			name: "Gezondheidscheck",
@@ -103,14 +103,14 @@ class Calculator extends React.Component
 				<Grid container spacing={2} 
 				justify="flex-start">
 					<Grid item xs={12}>
-						<Typography variant="h4">Corona regels bij evenementen </Typography>
+						<Typography variant="h4">Covid-19 -Verplichtingen rond evenementen</Typography>
 						
 					</Grid>
 					<Grid item xs={12}>
-						<Typography color='TextSecondary'>Versie 25 September 2020 </Typography>
+						<Typography color='TextSecondary'>Versie 25 september 2020 </Typography>
 						<Typography variant="body2" color='secondary'> Dit formulier is een hulpmiddel, er kunnen geen rechten ontleend worden aan de uitslag. </Typography>
-						<Typography variant="body2" color='secondary'> In verschillende regio's gelden aanvullende maatregelen die niet in dit formulier zijn opgenomen. </Typography>
-						<Typography variant="body1" color='TextSecondary'> Vul het formulier volledig in voor het beste resultaat </Typography>
+						<Typography variant="body2" color='secondary'> In verschillende regio's kunnen aanvullende maatregelen gelden die niet in dit formulier zijn opgenomen. </Typography>
+						<Typography variant="body1" color='TextSecondary'> Vul het formulier volledig in voor het beste resultaat. </Typography>
 					</Grid>
 					<Grid item xs={12}>
 						<TextField 
@@ -148,7 +148,7 @@ class Calculator extends React.Component
           onChange={this.handleVeiligheidsregioChange}
                   >
           <MenuItem value="">
-            <em>None</em>
+            <em></em>
           </MenuItem>
           <MenuItem value={100 }>	    Amsterdam-Amstelland		</MenuItem>
 <MenuItem value={2 }>	    Brabant-Noord		</MenuItem>
@@ -176,7 +176,7 @@ class Calculator extends React.Component
 <MenuItem value={24 }>	    Zuid-Holland Zuid		</MenuItem>
 <MenuItem value={25 }>	    Zuid-Limburg		</MenuItem>
         </Select>
-        <FormHelperText>In welke Veiligheidsregio vind het plaats?</FormHelperText>
+        <FormHelperText>In welke Veiligheidsregio vindt het plaats?</FormHelperText>
       </FormControl>
 
 		
@@ -197,7 +197,7 @@ class Calculator extends React.Component
 			            color="primary"
 			          />
 			        }
-			        label=<Typography variant="body2">Is er sprake van een evenement met doorstroom?</Typography>
+			        label=<Typography variant="body2">Is er sprake van een evenement met continue doorstroom van publiek?</Typography>
 		      	/>
 	      	</Grid>
 
@@ -212,7 +212,7 @@ class Calculator extends React.Component
 			            color="primary"
 			          />
 			        }
-			        label=<Typography variant="body2">Vind het evenement binnen plaats?</Typography>
+			        label=<Typography variant="body2">Vindt het evenement binnen plaats?</Typography>
 		      	/>
 	      	</Grid>
 			<Grid item xs={12}
@@ -240,6 +240,9 @@ class Calculator extends React.Component
 	      	</Grid>
 	      	<Grid item xs={12}>
 	      		<Result rows={[verboden, melding, placeren, check]} />
+	      	</Grid>
+	      	<Grid item xs={12}>
+	      		<Typography variant="subtitle" color="TextSecondary">Voor meer informatie over de definities en locale regels wordt u verwezen naar de website van de relevante veiligheidsregio.</Typography>
 	      	</Grid>
 	      </Grid>
 	     </React.Fragment>

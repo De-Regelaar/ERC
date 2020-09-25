@@ -20,7 +20,7 @@ class Result extends React.Component
         	<TableRow>
         		<TableCell />
         		<TableCell colspan={1}>Uitkomst</TableCell>
-        		<TableCell colspan={1}>Grens</TableCell>
+        		<TableCell colspan={2}>Grens</TableCell>
         		
         	</TableRow>
           
