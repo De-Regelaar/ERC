@@ -74,13 +74,13 @@ class Calculator extends React.Component
 				
 		let verboden = {		
 			name: "Verboden?",
-			uitkomst: (this.state.gezelschap >=50) && (this.state.veiligheidsregio>=199)?<Typography color='Secondary'>ja</Typography>:"nee",
+			uitkomst: (this.state.gezelschap >=50) && (this.state.veiligheidsregio>=199 && this.state.veiligheidsregio<=299)?<Typography color='Secondary'>ja</Typography>:"nee",
 			grens: "In regio's die in risiconiveau 2 vallen kunnen geen evenementen plaatsvinden met grote gezelschappen. Ook niet na een melding.",
-		};
+		};	
 
 		const melding = {
 			name: "Melding doen",
-			uitkomst:(this.state.bezoekers >=50) && (this.state.veiligheidsregio>=199)?<Typography color='Secondary'>ja</Typography>:"nee",
+			uitkomst:(this.state.bezoekers >=50) && (this.state.veiligheidsregio>=199 && this.state.veiligheidsregio<=299)?<Typography color='Secondary'>ja</Typography>:"nee",
 			grens: "50 of meer bezoekers in regio's in risiconiveau 2.",
 		};
 
@@ -91,6 +91,7 @@ class Calculator extends React.Component
 			|| (this.state.terras>=1)?<Typography color='Secondary'>ja</Typography>:"nee",
 			grens: "Binnen moet bij alle aantallen worden geplaceerd. Buiten is dat verplicht vanaf 250 bezoekers. Voor beide is er een uitzondering in het geval van continue doorstroom.",
 		};
+
 		const check = {
 			name: "Gezondheidscheck",
 			uitkomst: ((this.state.bezoekers>=250) && (this.state.binnen<1) && (this.state.doorstroom<1))
@@ -107,7 +108,7 @@ class Calculator extends React.Component
 						
 					</Grid>
 					<Grid item xs={12}>
-						<Typography color='primary'>Versie 25 september 2020 </Typography>
+						<Typography color='primary'>Versie 28 september 2020 </Typography>
 						<Typography variant="body2" color='secondary'> Dit formulier is een hulpmiddel, er kunnen geen rechten ontleend worden aan de uitslag. </Typography>
 						<Typography variant="body2" color='secondary'> In verschillende regio's kunnen aanvullende maatregelen gelden die niet in dit formulier zijn opgenomen. </Typography>
 						<Typography variant="body1" color='TextSecondary'> Vul het formulier volledig in voor het beste resultaat. </Typography>
