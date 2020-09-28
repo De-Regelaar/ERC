@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ERC/static/css/main.ba49ec77.chunk.css",
-    "main.js": "/ERC/static/js/main.437e0a9a.chunk.js",
-    "main.js.map": "/ERC/static/js/main.437e0a9a.chunk.js.map",
+    "main.js": "/ERC/static/js/main.54c6e7a2.chunk.js",
+    "main.js.map": "/ERC/static/js/main.54c6e7a2.chunk.js.map",
     "runtime~main.js": "/ERC/static/js/runtime~main.89799ce7.js",
     "runtime~main.js.map": "/ERC/static/js/runtime~main.89799ce7.js.map",
     "static/js/2.be8e36d6.chunk.js": "/ERC/static/js/2.be8e36d6.chunk.js",
     "static/js/2.be8e36d6.chunk.js.map": "/ERC/static/js/2.be8e36d6.chunk.js.map",
     "index.html": "/ERC/index.html",
-    "precache-manifest.c986f424e1e41cf16f2e32650eceed0f.js": "/ERC/precache-manifest.c986f424e1e41cf16f2e32650eceed0f.js",
+    "precache-manifest.b7678636718ea861c3edc640e0545eab.js": "/ERC/precache-manifest.b7678636718ea861c3edc640e0545eab.js",
     "service-worker.js": "/ERC/service-worker.js",
     "static/css/main.ba49ec77.chunk.css.map": "/ERC/static/css/main.ba49ec77.chunk.css.map"
   }
