@@ -1,13 +1,8 @@
 import React from 'react';
 
-import {Grid, Typography, TextField, FormControlLabel, Checkbox, Divider} from '@material-ui/core';
+import {Grid, Typography, TextField, FormControlLabel, Divider} from '@material-ui/core';
 
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import FormGroup from '@material-ui/core/FormGroup';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormLabel from '@material-ui/core/FormLabel';
@@ -115,7 +110,7 @@ class Calculator extends React.Component
 
 		const reservering = {
 			name: "Reservering",
-			uitkomst: (this.state.inruimte >100) && (this.state.binnen === "binnen") || (this.state.doorstroom <=1) ? <Typography color='Secondary'>ja</Typography>:"nee",
+			uitkomst: ((this.state.inruimte >100) && (this.state.binnen === "binnen")) || (this.state.doorstroom <=1) ? <Typography color='Secondary'>ja</Typography>:"nee",
 			grens: "Binnen vanaf 100 bezoekers. Bij doorstroom evenementen moeten afspraken gemaakt worden over aantallen en tijdslots.",
 		};
 
