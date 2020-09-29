@@ -79,8 +79,8 @@ class Calculator extends React.Component
 		
 				
 		const verboden = {		
-			name: "Verboden?",
-			uitkomst: (this.state.doorstroom >= "3") || (this.state.gezelschap > 4) || ((this.state.inruimte >30) && (this.state.binnen === "binnen")) || ((this.state.bezoekers >40) && (this.state.binnen === "buiten") && (this.state.doorstroom >1))?<Typography color='Secondary'>ja</Typography>:"nee",
+			name: "Verbod",
+			uitkomst: (this.state.doorstroom === "roulatie") || (this.state.gezelschap > 4) || ((this.state.inruimte >30) && (this.state.binnen === "binnen")) || ((this.state.bezoekers >40) && (this.state.binnen === "buiten") && (this.state.doorstroom ==="zitten"))?<Typography color='Secondary'>ja</Typography>:"nee",
 			grens: "Let op: voor sommige culturele gebouwen kan een ontheffing worden aangevraagd waardoor er wel meer dan 30 personen binnen mogen (per ruimte).",
 		};	
 
@@ -92,26 +92,26 @@ class Calculator extends React.Component
 
 		const maatwerk = {		
 			name: "Maatwerk",
-			uitkomst: (this.state.doorstroom <=1)?<Typography color='Secondary'>ja</Typography>:"nee",
-			grens: "Voor doorstroom evenementen (binnen en buiten) dienen afspraken gemaakt te worden over het aantal personen per vierkante meter.",
+			uitkomst: (this.state.doorstroom === "doorstroom")?<Typography color='Secondary'>ja</Typography>:"nee",
+			grens: "Voor doorstroomevenementen (binnen en buiten) dienen afspraken te worden gemaakt over het aantal personen per vierkante meter.",
 		};	
 
 		const placeren = {
 			name: "Bezoeker placeren",
-			uitkomst: (this.state.doorstroom >1)?<Typography color='Secondary'>ja</Typography>:"nee",
-			grens: "Met uizondering van evenementen met een continue doorstroom dienen alle bezoekers geplaceerd te zijn.",
+			uitkomst: (this.state.doorstroom === "zitten") || this.state.doorstroom === "roulatie"?<Typography color='Secondary'>ja</Typography>:"nee",
+			grens: "Met uitzondering van evenementen met een continue doorstroom dienen alle bezoekers geplaceerd te zijn.",
 		};
 
 		const check = {
 			name: "Gezondheidscheck",
-			uitkomst: ((this.state.inruimte>=100) && (this.state.binnen === "binnen") && (this.state.doorstroom >1)) ? <Typography color='Secondary'>ja</Typography>:"nee",
-			grens: "Binnen vanaf 100 bezoekers. Door de verlaging van het aantal mensen buiten hoeft er buiten, of bij doorstroom evenementen geen gezondheidscheck te worden gedaan." ,
+			uitkomst: ((this.state.inruimte>100) && (this.state.binnen === "binnen") && (this.state.doorstroom === "zitten")) || ((this.state.inruimte>=100) && (this.state.binnen === "binnen") && (this.state.doorstroom === "roulatie"))? <Typography color='Secondary'>ja</Typography>:"nee",
+			grens: "Binnen vanaf 100 bezoekers. Buiten, of bij doorstroomevenementen, hoeft geen gezondheidscheck te worden gedaan." ,
 		};
 
 		const reservering = {
 			name: "Reservering",
-			uitkomst: ((this.state.inruimte >100) && (this.state.binnen === "binnen")) || (this.state.doorstroom <=1) ? <Typography color='Secondary'>ja</Typography>:"nee",
-			grens: "Binnen vanaf 100 bezoekers. Bij doorstroom evenementen moeten afspraken gemaakt worden over aantallen en tijdslots.",
+			uitkomst: ((this.state.inruimte >100) && (this.state.binnen === "binnen")) || (this.state.doorstroom === "doorstroom") ? <Typography color='Secondary'>ja</Typography>:"nee",
+			grens: "Binnen vanaf 100 bezoekers. Bij doorstroomevenementen moeten afspraken worden gemaakt over aantallen en tijdslots.",
 		};
 
 
@@ -132,7 +132,7 @@ class Calculator extends React.Component
 					
 
 					<Grid item xs={12}>
-					<Typography variant="h6">Locatie en bezoekers aantallen</Typography>
+					<Typography variant="h6">Locatie en bezoekersaantallen</Typography>
 					</Grid>
 
       	<Grid item xs={12}
@@ -152,7 +152,7 @@ class Calculator extends React.Component
 						<TextField 
 							id="bezoekers"
 							name="bezoekers"
-							label='Totaal aantal bezoekers buitenevenement (incl kinderen, excl personeel)' 
+							label='Totaal aantal bezoekers buitenevenement (incl. kinderen, excl. personeel)' 
 							type="number"
 							fullWidth
 							value = {this.state.bezoekers} 
@@ -166,7 +166,7 @@ class Calculator extends React.Component
 						<TextField 
 							id="inruimte"
 							name="inruimte"
-							label='Maximaal aantal bezoekers in een binnenruimte (incl kinderen, excl personeel)' 
+							label='Maximaal aantal bezoekers in een binnenruimte (incl. kinderen, excl. personeel)' 
 							type="number"
 							fullWidth
 							value = {this.state.inruimte} 
@@ -180,7 +180,7 @@ class Calculator extends React.Component
 						<TextField 
 							id="gezelschap"
 							name="gezelschap"
-							label='Hoeveel personen in het grootste aanwezige gezelschap?' 
+							label='Hoeveel personen in het grootste aanwezige gezelschap? (Kinderen tot en met 12 tellen niet mee)' 
 							type="number"
 							fullWidth
 							value = {this.state.gezelschap} 
@@ -200,17 +200,21 @@ class Calculator extends React.Component
 						<FormControl component="fieldset">
       <FormLabel component="legend">Type evenement</FormLabel>
       <RadioGroup aria-label="Doorstroom" name="doorstroom" value={this.state.doorstroom} onChange={this.handleDoorstroomChange}>
-        <FormControlLabel value="1" control={<Radio />} label="Continue doorstroom van bezoekers" />
-        <FormControlLabel value="2" control={<Radio />} label="Alle bezoekers zitten" />
-        <FormControlLabel value="3" control={<Radio />} label="Bezoekers zitten maar er is sprake van roulatie" />
+        <FormControlLabel value="doorstroom" control={<Radio />} label="Continue doorstroom van bezoekers" />
+        <FormControlLabel value="zitten" control={<Radio />} label="Alle bezoekers zitten" />
+        <FormControlLabel value="roulatie" control={<Radio />} label="Bezoekers zitten maar er is sprake van roulatie" />
         
       </RadioGroup>
     </FormControl>
- <Divider variant="middle"/>
+
+
 		      	</Grid>
 
-	
+	<Grid item xs={12}
+    align= "left">
+    Indien het evenement een combinatie van deze aspecten heeft, bijvoorbeeld een doorstroomevenement met een horecaplein, dan dient u de onderdelen voor deze berekening als apart (zij)evenement te zien.
 
+</Grid>
 				</Grid>
 	      <Divider variant="middle"/>	
 	      <Grid container spacing={2}>
