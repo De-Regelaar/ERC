@@ -4,12 +4,13 @@
   "private": true,
   "description": "Corona maatregelen evenementen",
   "homepage": "https://de-regelaar.github.io/ERC/",
-  
   "dependencies": {
     "@material-ui/core": "^4.0.2",
+    "browserslist": "^4.14.5",
+    "caniuse-lite": "^1.0.30001141",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-scripts": "^3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,7 +29,7 @@
       "not dead",
       "not op_mini all"
     ],
-"development": [
+    "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
@@ -37,5 +38,4 @@
   "devDependencies": {
     "gh-pages": "^2.0.1"
   }
-
 }

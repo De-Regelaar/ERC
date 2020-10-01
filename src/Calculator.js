@@ -117,8 +117,9 @@ class Calculator extends React.Component
 
 		return (
 			<React.Fragment>
-				<Grid container spacing={2} 
-				justify="flex-start">
+				<Grid container spacing={4} 
+				justify="flex-start"
+				Divider variant="middle">
 					<Grid item xs={12}>
 						<Typography variant="h4">Covid-19 -Verplichtingen rond evenementen</Typography>
 						
@@ -150,11 +151,18 @@ class Calculator extends React.Component
 					<Grid item xs={12}
 					align="left">
 						<TextField 
+						error = {(this.state.binnen === "buiten" && !this.state.bezoekers) || (this.state.bezoekers < "0")}
 							id="bezoekers"
 							name="bezoekers"
-							label='Totaal aantal bezoekers buitenevenement (incl. kinderen, excl. personeel)' 
+							label='Totaal aantal bezoekers buitenevenement' 
+							helperText="(incl. kinderen, excl. personeel)"
 							type="number"
 							fullWidth
+							 InputLabelProps={{
+            shrink: true,
+          }}
+							variant="outlined"
+
 							value = {this.state.bezoekers} 
 							onChange={this.handleBezoekersChange}
 							disabled = {!this.state.binnen || this.state.binnen === "binnen"}
@@ -164,11 +172,17 @@ class Calculator extends React.Component
 			<Grid item xs={12}
 					align="left">
 						<TextField 
+						error = {(this.state.binnen === "binnen" && !this.state.inruimte) || (this.state.inruimte < "0")}
 							id="inruimte"
 							name="inruimte"
-							label='Maximaal aantal bezoekers in een binnenruimte (incl. kinderen, excl. personeel)' 
+							label='Maximaal aantal bezoekers per ruimte' 
+							helperText="(incl. kinderen, excl. personeel)"
 							type="number"
 							fullWidth
+							 InputLabelProps={{
+            shrink: true,
+          }}
+							variant="outlined"
 							value = {this.state.inruimte} 
 							onChange={this.handleInruimteChange}
 							disabled = {!this.state.binnen || this.state.binnen === "buiten"}
@@ -178,18 +192,25 @@ class Calculator extends React.Component
 					<Grid item xs={12}
 					align="left">
 						<TextField 
+						error = {(this.state.binnen && !this.state.gezelschap) || (this.state.gezelschap < "0")}
 							id="gezelschap"
 							name="gezelschap"
-							label='Hoeveel personen in het grootste aanwezige gezelschap? (Kinderen tot en met 12 tellen niet mee)' 
+							label='Aantal personen in het grootste gezelschap ' 
+							helperText="(kinderen tot en met 12 tellen niet mee)"
 							type="number"
 							fullWidth
+							 InputLabelProps={{
+            shrink: true,
+          }}
+							variant="outlined"
 							value = {this.state.gezelschap} 
 							onChange={this.handleGezelschapChange}
 							disabled = {!this.state.binnen}
 						/>
 					</Grid>
 					
-					
+							</Grid>
+	      <Grid container spacing={0}>
 					<Grid item xs={12}>
 					<Typography variant="h6">Is er op het evenement sprake van een hieronder staande situatie? </Typography>
 					</Grid>
@@ -212,12 +233,17 @@ class Calculator extends React.Component
 
 	<Grid item xs={12}
     align= "left">
-    Indien het evenement een combinatie van deze aspecten heeft, bijvoorbeeld een doorstroomevenement met een horecaplein, dan dient u de onderdelen voor deze berekening als apart (zij)evenement te zien.
+    <Typography variant="subtitle" color="TextSecondary">Indien het evenement een combinatie van deze aspecten heeft, bijvoorbeeld een doorstroomevenement met een horecaplein, dan dient u de onderdelen voor deze berekening als apart (zij)evenement te zien.</Typography>
 
 </Grid>
 				</Grid>
-	      <Divider variant="middle"/>	
-	      <Grid container spacing={2}>
+
+	      <Divider variant="middle" />
+	      <Grid container spacing={1}>
+	      <Grid item xs={12}>
+
+
+	      </Grid>
 	      	<Grid item xs={12}>
 	      		<Typography variant="h5">Resultaten</Typography>
 
